@@ -13,15 +13,6 @@ app.use(cors(
 ));
 
 
-app.get('/ping',(req,res)=>{
-  res.send('PONG')
-})
-
-
-app.get('/',(req,res)=>{
-  res.send('server is running in new developement ')
-})
-
 // Configure env
 dotenv.config();
 
@@ -39,6 +30,10 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api', studentsRoutes);
 
 
+app.get('/',(req,res)=>{
+  app.use(express.static(path.resolve(__dirname,"client","build")));
+  res.sendFile(path.resolve(__dirname,"client","build","index.html"))
+})
 
 
 
