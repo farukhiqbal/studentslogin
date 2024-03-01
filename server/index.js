@@ -7,13 +7,20 @@ import Path  from 'path';
 
 const app = express();
 
-
-
-
 // Enable CORS
 app.use(cors(
   
 ));
+
+
+app.get('/ping',(req,res)=>{
+  res.send('PONG')
+})
+
+
+app.get('/',(req,res)=>{
+  res.send('server is running in new developement ')
+})
 
 // Configure env
 dotenv.config();
@@ -35,7 +42,7 @@ app.use('/api', studentsRoutes);
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
