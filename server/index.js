@@ -3,7 +3,7 @@ import cors from 'cors';
 import connectDB from './config/db.js'; // Assuming connectDB is exported from db.js as an ES module
 import dotenv from 'dotenv';
 import studentsRoutes  from './routes/studentsRoutes.js'
-import Path  from 'path';
+import path  from 'path';
 
 const app = express();
 
@@ -11,6 +11,7 @@ const app = express();
 app.use(cors(
   
 ));
+
 
 
 // Configure env
@@ -22,6 +23,10 @@ app.use(express.json());
 connectDB();
 
 
+app.get('/',(req,res)=>{
+  app.use(express.static(path.resolve(__dirname,"client","build")));
+  res.sendFile(path.resolve(__dirname,"client","build","index.html"))
+})
 
 
 // Serve uploaded images statically
@@ -30,10 +35,6 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api', studentsRoutes);
 
 
-app.get('/',(req,res)=>{
-  app.use(express.static(path.resolve(__dirname,"client","build")));
-  res.sendFile(path.resolve(__dirname,"client","build","index.html"))
-})
 
 
 
