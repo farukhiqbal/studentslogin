@@ -8,7 +8,11 @@ import path from "path";
 const app = express();
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: "https://studentslogin.vercel.app",
+  methods: ["POST", "GET", "DELETE", "PUT"],
+  credentials: true
+}));
 
 // Configure env
 dotenv.config();
