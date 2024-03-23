@@ -9,7 +9,7 @@ const app = express();
 
 // Enable CORS
 app.use(cors({
-  origin: "https://studentslogin.vercel.app",
+  origin: "https://studentslogin.vercel.app/",
   methods: ["POST", "GET", "DELETE", "PUT"],
   credentials: true
 }));
