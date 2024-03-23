@@ -18,9 +18,11 @@ app.use(express.json());
 // Database config
 connectDB();
 
-app.get("/", (res, req) => {
-  res.json("server is running ");
-});
+
+app.get('/', (req, res) => {
+  res.send("server is running ")
+
+})
 
 // app.get('/',(req,res)=>{
 //   app.use(express.static(path.resolve(__dirname,"client","build")));
